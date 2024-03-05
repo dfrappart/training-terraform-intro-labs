@@ -141,7 +141,7 @@ provider "azurerm" {
 Once your template is ready, open a new shell and login using AZ CLI
 
 ```bash
-az login
+az login --tenant 00000000-0000-0000-0000-000000000000
 az account set --subscription "subscription_id"
 ```
 
