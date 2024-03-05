@@ -202,7 +202,7 @@ provider "azurerm" {
 Open a new shell session, and run the following commands:
 
 ```powershell
-az login
+az login --tenant 00000000-0000-0000-0000-000000000000
 $env:ARM_SUBSCRIPTION_ID="Id of the provided training subscription"
 terraform init
 ```
