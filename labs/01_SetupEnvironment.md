@@ -141,7 +141,7 @@ provider "azurerm" {
 Once your template is ready, open a new shell and login using AZ CLI
 
 ```bash
-az login --tenant 00000000-0000-0000-0000-000000000000
+az login
 az account set --subscription "subscription_id"
 ```
 
@@ -202,7 +202,7 @@ provider "azurerm" {
 Open a new shell session, and run the following commands:
 
 ```powershell
-az login --tenant 00000000-0000-0000-0000-000000000000
+az login
 $env:ARM_SUBSCRIPTION_ID="Id of the provided training subscription"
 terraform init
 ```
