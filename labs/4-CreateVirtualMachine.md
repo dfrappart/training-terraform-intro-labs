@@ -6,7 +6,7 @@
   - [Instructions](#instructions)
     - [Before you start](#before-you-start)
     - [Exercise 1: Deploy an Azure Virtual Machine](#exercise-1-deploy-an-azure-virtual-machine)
-    - [Exercise 3: Remove resources](#exercise-3-remove-resources)
+    - [Exercise 2: Remove resources](#exercise-2-remove-resources)
 
 ## Lab overview
 
@@ -132,7 +132,7 @@ Confirm the creation, approving with *yes*.
 
 Use the Azure portal to confirm resources creation.
 
-### Exercise 3: Remove resources
+### Exercise 2: Remove resources
 
 Run the `destroy` command:
 
