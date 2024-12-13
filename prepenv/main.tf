@@ -23,7 +23,7 @@ resource "azurerm_storage_account" "Statfstate" {
   cross_tenant_replication_enabled  = true
   default_to_oauth_authentication   = false
   edge_zone                         = null
-  enable_https_traffic_only         = true
+  #enable_https_traffic_only         = true
   infrastructure_encryption_enabled = false
   is_hns_enabled                    = false
   large_file_share_enabled          = null
@@ -89,7 +89,7 @@ resource "azurerm_storage_account" "Statfstate" {
 }
 
 resource "azurerm_resource_group" "RG2" {
-  provider = azurerm.trainingroom1
+  provider = azurerm.trainingroom3
   #count                                 = 3
   for_each = toset(var.TrainingList)
   name     = "rsg-${each.value}-2"
@@ -104,14 +104,14 @@ resource "azurerm_role_assignment" "rbacrg" {
   for_each             = toset(var.TrainingList)
   scope                = azurerm_resource_group.RG[each.value].id
   role_definition_name = "Contributor"
-  principal_id         = "315c2a18-2319-4a09-ac4d-b129519b32c7"
+  principal_id         = "0fc60ab8-b9c9-4ffa-aa0e-7b496947755f"
 }
 
 resource "azurerm_role_assignment" "rbacrg2" {
-  provider             = azurerm.trainingroom1
+  provider             = azurerm.trainingroom3
   for_each             = toset(var.TrainingList)
   scope                = azurerm_resource_group.RG2[each.value].id
   role_definition_name = "Contributor"
-  principal_id         = "315c2a18-2319-4a09-ac4d-b129519b32c7"
+  principal_id         = "0fc60ab8-b9c9-4ffa-aa0e-7b496947755f"
 }
 

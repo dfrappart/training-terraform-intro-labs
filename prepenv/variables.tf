@@ -150,6 +150,8 @@ variable "TrainingList" {
   description = "The trainee list"
   default = [
     "david.frappart",
+    "peter.parker",
+    "bruce.wayne",
 
 
 
