@@ -52,14 +52,14 @@ By default, Terraform will create this file locally, in a file named `terraform.
 This file contains information on real world infrastructure, including sensitive data (for instance, Virtual Machines admin account password).  
 It is preferable to use a remote than a local *tfstate* file for different reasons, among which:
 
-- Templates should be commited to a source code repository, and should not contain sensitive data
+- Templates should be committed to a source code repository, and should not contain sensitive data
 - Because a deployment can be required when the author of the template is on vacation, collaborative work should be the norm
 - Using a file in a network share won't protect from collision if there are multiple deployments at the same time.
 
 An alternative is to use an Azure Blob storage to store the *tfstate*.  
 Benefits are:
 
-- *tfstate* won't be commited in source code.
+- *tfstate* won't be committed in source code.
 - Access to the *tfstate* is managed using RBAC or SAS (Shared Access Signature) token.
 - Blob Storage has a native lock feature used by Terraform, protecting from collision in case of multiple deployments at the same time
 
@@ -131,7 +131,7 @@ Notes:
     ```
 
     The configuration of the *azurerm* provider:
-    - **skip_provider_registration**: The provider will not try to register all the Resource Providers it supports
+    - **skip_provider_registration**: The provider will not try to register all the Resource Providers it supports (default is `false`, meaning the Azure Provider will automatically register all of the Resource Providers which it supports on launch)
     - **feature**: List of features that might be activated on the provider
     - **subscription_id**: The Id of the subscription where to deploy resources
 
@@ -180,7 +180,7 @@ The first Terraform command to run after you created your template is
 terraform init
 ```
 
-This command has no side effects (I.e. that it will **not** modify any resources nor update the tfstate file).  
+This command has no side effects (I.e. that it will **not** modify any resources nor update the *tfstate* file).  
 It can be run anytime.
 
 It will
