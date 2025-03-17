@@ -5,10 +5,8 @@ terraform {
   backend "azurerm" {}
 
   required_providers {
-    azurerm = ">= 3.80.0"
-
+    azurerm = ">= 4.0.0"
 
   }
-
 
 }

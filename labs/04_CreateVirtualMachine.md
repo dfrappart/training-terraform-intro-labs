@@ -33,7 +33,7 @@ After you complete this lab, you will be able to:
 Create a `data.tf` file, and add the following `data` block to reference your Storage Account:
 
 ```hcl
-data "azurerm_resource_group" "training-rg" {
+data "azurerm_resource_group" "training_rg" {
   name = "your_resource_group_name"
 }
 ```
@@ -47,7 +47,7 @@ Create a `vm.tf` file, and add the following blocks to create a Virtual Machine:
 # virtual machine
 resource "azurerm_linux_virtual_machine" "vm_training" {
   name                = "vm4agdtftraining"
-  resource_group_name  = data.azurerm_resource_group.training-rg.name
+  resource_group_name  = data.azurerm_resource_group.training_rg.name
   location            = "westeurope"
   size                = "Standard_B2s"
   admin_username      = "adminuser"
@@ -74,7 +74,7 @@ resource "azurerm_linux_virtual_machine" "vm_training" {
 resource "azurerm_network_interface" "nic_training" {
   name                = "example-nic"
   location            = "westeurope"
-  resource_group_name  = data.azurerm_resource_group.training-rg.name
+  resource_group_name  = data.azurerm_resource_group.training_rg.name
 
   ip_configuration {
     name                          = "internal"
@@ -85,7 +85,7 @@ resource "azurerm_network_interface" "nic_training" {
 
 resource "azurerm_subnet" "sn_training" {
   name                 = "internal"
-  resource_group_name  = data.azurerm_resource_group.training-rg.name
+  resource_group_name  = data.azurerm_resource_group.training_rg.name
   virtual_network_name = azurerm_virtual_network.vn_training.name
   address_prefixes     = ["10.0.2.0/24"]
 }
@@ -94,7 +94,7 @@ resource "azurerm_virtual_network" "vn_training" {
   name                = "example-network"
   address_space       = ["10.0.0.0/16"]
   location            = "westeurope"
-  resource_group_name = data.azurerm_resource_group.training-rg.name
+  resource_group_name = data.azurerm_resource_group.training_rg.name
 }
 
 ```

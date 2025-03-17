@@ -42,7 +42,7 @@ After you complete this lab, you will be able to:
 Create a `data.tf` file, and add the following `data` block to reference your Storage Account:
 
 ```hcl
-data "azurerm_resource_group" "training-rg" {
+data "azurerm_resource_group" "training_rg" {
   name = "your_resource_group_name"
 }
 ```
@@ -110,7 +110,7 @@ Create a `db.tf` file, and add the following blocks to create an Azure SQL Serve
 ```hcl
 resource "azurerm_mssql_server" "training_sql_srv" {
   name                         = "${var.project_name}-sqlsrv"
-  resource_group_name          = data.azurerm_resource_group.training-rg.name
+  resource_group_name          = data.azurerm_resource_group.training_rg.name
   location                     = var.location
   version                      = "12.0"
   administrator_login          = var.admin_account_login

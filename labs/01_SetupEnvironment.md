@@ -70,10 +70,10 @@ From the Azure portal
 
 Notes:
 
-> Terraform will **not** create this storage and assume it is existing.  
+> Terraform will **not** create this storage and will assume it is existing.  
 > This should be the **unique manual creation** when you use Terraform.
 
-> The creation of this storage can be done using AZ CLI or Powershell.
+> The creation of this storage can also be done using AZ CLI or Powershell.
 
 ### Exercise 2: Setup the template configuration
 
@@ -107,14 +107,14 @@ Notes:
 
     > There are multiple types of backend that might be used. All majors Cloud Providers have their own (s3 for AWS, gcs for GCP, ...)
 
-    > This configuration is valid for an authentication using AZ CLI. If you're using a Service Principal or a Managed Identity, additionnal fields may be mandatory.  
-    Refer tp https://www.terraform.io/docs/language/settings/backends/azurerm.html
+    > This configuration is valid for an authentication using AZ CLI. If you're using a Service Principal or a Managed Identity, additional fields may be mandatory.  
+    Refer tp https://developer.hashicorp.com/terraform/language/backend/azurerm
 
 1. In the Terraform configuration block, add the provider requirements:
 
     ```hcl
     required_providers {
-      azurerm = ">= 3.0.0"
+      azurerm = ">= 4.0.0"
     }
     ```
 
@@ -124,13 +124,16 @@ Notes:
 
     ```hcl
     provider "azurerm" {
-      skip_provider_registration = true
+      # required when the User, Service Principal, or Identity running Terraform lacks the permissions to register Azure Resource Providers
+      resource_provider_registrations = "none"
+      #skip_provider_registration = true
       features {}
-      subscription_id = [Id of the provided subscription]
+      subscription_id = "Id of the provided subscription"
     }
     ```
 
     The configuration of the *azurerm* provider:
+    - **resource_provider_registrations**: (Optional) Set of Azure Resource Providers to automatically register when initializing the AzureRM Provider
     - **skip_provider_registration**: The provider will not try to register all the Resource Providers it supports (default is `false`, meaning the Azure Provider will automatically register all of the Resource Providers which it supports on launch)
     - **feature**: List of features that might be activated on the provider
     - **subscription_id**: The Id of the subscription where to deploy resources
@@ -151,12 +154,14 @@ terraform {
   }
 
   required_providers {
-    azurerm = ">= 3.0.0"
+    azurerm = ">= 4.0.0"
   }
 }
 
 provider "azurerm" {
-  skip_provider_registration = true
+  # required when the User, Service Principal, or Identity running Terraform lacks the permissions to register Azure Resource Providers
+  resource_provider_registrations = "none"
+  #skip_provider_registration = true
   features {}
   subscription_id = "Id of the provided subscription"
 }
@@ -213,7 +218,7 @@ You should adopt this convention as soon as possible.
 Some settings in this template may vary when deploying to different environments:
 
 - the subscription
-- the backend Storage Account.
+- the backend configuration (either Storage Account, container or key).
 
 #### Use an environment variable to select the subscription
 
@@ -226,7 +231,9 @@ It now should be
 
 ```hcl
 provider "azurerm" {
-  skip_provider_registration = true
+  # required when the User, Service Principal, or Identity running Terraform lacks the permissions to register Azure Resource Providers
+  resource_provider_registrations = "none"
+  #skip_provider_registration = true
   features {}
 }
 ```
@@ -244,7 +251,7 @@ terraform init
 You can define the Backend configuration using command line parameters, or from data stored in an external file.  
 This mechanism is called *partial configuration*.
 
-> For an overview of partial configuration, see https://www.terraform.io/docs/language/settings/backends/configuration.html#partial-configuration.
+> For an overview of partial configuration, see https://developer.hashicorp.com/terraform/language/backend#partial-configuration.
 
 1. Create a folder called *configuration* and add a file named `dev-backend.hcl`
 1. Edit this file adding the content of the following backend configuration block in this file.  
@@ -257,6 +264,10 @@ This mechanism is called *partial configuration*.
     key                  = "training.tfstate"
     ```
 1. Remove the content of the backend configuration block in your `version.tf`, and leave it empty.
+
+    ```hcl
+    backend "azurerm" {}
+    ```
 
 We can now set the backend using the CLI option, running the following command:
 
