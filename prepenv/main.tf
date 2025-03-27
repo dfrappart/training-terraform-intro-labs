@@ -60,27 +60,7 @@ resource "azurerm_storage_account" "Statfstate" {
     ip_rules                   = []
     virtual_network_subnet_ids = []
   }
-  queue_properties {
-    hour_metrics {
-      enabled               = true
-      include_apis          = true
-      retention_policy_days = 7
-      version               = "1.0"
-    }
-    logging {
-      delete                = false
-      read                  = false
-      retention_policy_days = null
-      version               = "1.0"
-      write                 = false
-    }
-    minute_metrics {
-      enabled               = false
-      include_apis          = false
-      retention_policy_days = null
-      version               = "1.0"
-    }
-  }
+
   share_properties {
     retention_policy {
       days = 7
@@ -104,7 +84,7 @@ resource "azurerm_role_assignment" "rbacrg" {
   for_each             = toset(var.TrainingList)
   scope                = azurerm_resource_group.RG[each.value].id
   role_definition_name = "Contributor"
-  principal_id         = "0fc60ab8-b9c9-4ffa-aa0e-7b496947755f"
+  principal_id         = var.TrainingGroup
 }
 
 resource "azurerm_role_assignment" "rbacrg2" {
@@ -112,6 +92,6 @@ resource "azurerm_role_assignment" "rbacrg2" {
   for_each             = toset(var.TrainingList)
   scope                = azurerm_resource_group.RG2[each.value].id
   role_definition_name = "Contributor"
-  principal_id         = "0fc60ab8-b9c9-4ffa-aa0e-7b496947755f"
+  principal_id         = var.TrainingGroup
 }
 

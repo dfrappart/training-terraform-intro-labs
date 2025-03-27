@@ -16,3 +16,12 @@ AzureClientID       = ""
 AzureClientSecret   = ""
 AzureTenantID       = ""
 
+TrainingList = [
+    "peter.parker",
+    "bruce.wayne",
+    "clark.kent",
+    "diana.prince",
+    "barry.allen",
+    "hal.jordan",]
+
+TrainingGroup = ""

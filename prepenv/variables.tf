@@ -52,95 +52,6 @@ variable "AzureRegion" {
 
 }
 
-######################################################
-# KV variables
-
-variable "Secretperms_TFApp_AccessPolicy" {
-  type        = list(any)
-  description = "The authorization on the secret for the Access policy"
-  default = [
-    "Backup",
-    "Purge",
-    "Recover",
-    "Restore",
-    "Get",
-    "List",
-    "Set",
-    "Delete"
-  ]
-
-}
-
-variable "Certperms_TFApp_AccessPolicy" {
-  type        = list(any)
-  description = "The authorization on the secret for the Access policy"
-  default = [
-    "Backup",
-    "Create",
-    "Delete",
-    "DeleteIssuers",
-    "Get",
-    "GetIssuers",
-    "Import",
-    "List",
-    "ListIssuers",
-    "ManageContacts",
-    "ManageIssuers",
-    "Purge",
-    "Recover",
-    "Restore",
-    "SetIssuers",
-    "Update"
-  ]
-
-}
-
-variable "Keyperms_TFApp_AccessPolicy" {
-  type        = list(any)
-  description = "The authorization on the secret for the Access policy"
-  default = [
-    "Backup",
-    "Create",
-    "Decrypt",
-    "Delete",
-    "Encrypt",
-    "Get",
-    "Import",
-    "List",
-    "Purge",
-    "Recover",
-    "Restore",
-    "Sign",
-    "UnwrapKey",
-    "Update",
-    "Verify",
-    "WrapKey",
-    "Release",
-    "Rotate",
-    "GetRotationPolicy",
-    "SetRotationPolicy"
-  ]
-
-}
-
-######################################################
-# AKS variables
-
-variable "Keyperms_AKSUAI_AccessPolicy" {
-  type        = list(any)
-  description = "The authorization on the secret for the Access policy"
-  default = [
-    "Decrypt",
-    "Encrypt"
-  ]
-
-}
-
-variable "AKSPrivateDNSZoneId" {
-  type        = string
-  description = "The private DNS zone Id for AKS Cluster"
-  default     = "System"
-}
 
 ######################################################
 # Training
@@ -149,11 +60,15 @@ variable "TrainingList" {
   type        = list(any)
   description = "The trainee list"
   default = [
-    "david.frappart",
     "peter.parker",
     "bruce.wayne",
+    "clark.kent",
+    "diana.prince",
+    "barry.allen",
+    "hal.jordan",]
+}
 
-
-
-  ]
+variable "TrainingGroup" {
+  type = string
+  description = "The group ID for the training"
 }
