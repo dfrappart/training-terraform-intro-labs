@@ -6,6 +6,8 @@
   - [Instructions](#instructions)
     - [Before you start](#before-you-start)
     - [Exercise 1: Deploy a Storage Account in an existing Resource Group](#exercise-1-deploy-a-storage-account-in-an-existing-resource-group)
+      - [Use your existing Resource Group](#use-your-existing-resource-group)
+      - [Create a Storage Account in this Resource Group](#create-a-storage-account-in-this-resource-group)
     - [Exercise 2: Update the Storage Account with Terraform](#exercise-2-update-the-storage-account-with-terraform)
     - [Exercise 3: Update the Storage Account from the portal](#exercise-3-update-the-storage-account-from-the-portal)
     - [Exercise 4: Update the Storage Account name](#exercise-4-update-the-storage-account-name)
@@ -26,16 +28,16 @@ After you complete this lab, you will be able to:
 
 ### Before you start
 
-- Ensure Terraform (version >= 1.0.0) is installed and available from system's PATH.
+- Ensure Terraform (version >= 1.0.0) is installed and available from system PATH.
 - Ensure Azure CLI is installed.
 - Check your access to the Azure Subscription and Resource Group provided for this training.
 - Your environment is setup and ready to use from the lab *1-Setup environment*.
 
 ### Exercise 1: Deploy a Storage Account in an existing Resource Group
 
-1. Make the manually created Resource Group known by Terraform
+#### Use your existing Resource Group
 
-Create a `data.tf` file, and add the following `data` block to reference your Storage Account:
+Create a `data.tf` file, and add the following `data` block to reference your Resource Group:
 
 ```hcl
 data "azurerm_resource_group" "training_rg" {
@@ -43,10 +45,10 @@ data "azurerm_resource_group" "training_rg" {
 }
 ```
 
-> Since this Resource Group has been created outside of Terraform, we are using a data block to retrieve its configuration.
+> Since this Resource Group has been created outside of Terraform, we are using a data block to retrieve its configuration.  
 > No change will be done on this Resource Group, this template does not manage its lifecyle.
 
-2. Create a Storage Account in this Resource Group
+#### Create a Storage Account in this Resource Group
 
 Create a `storage.tf` file, and add the following `resource` block to create a Storage Account:
 
@@ -83,7 +85,7 @@ Run the `apply` command:
 terraform apply
 ```
 
-Confirm the creation, approving with *yes*.  
+Confirm the creation (*yes* response).  
 The *tfstate* file is updated with the new resource.  
 Use the Azure portal to confirm Storage Account Creation.
 
@@ -171,8 +173,8 @@ Run the `destroy` command:
 terraform destroy
 ```
 
-The plan is indicating a resource to delete "Plan: 0 to add, 0 to change, 1 to destroy.".
-Confirm the deletion, approving with *yes*.
+The plan is indicating a resource to delete "Plan: 0 to add, 0 to change, 1 to destroy.".  
+Confirm the deletion (*yes* response).
 
 Note:
 > `apply` and `destroy` commands accept an `-auto-approve` option to the command line that avoids querying for user validation.  

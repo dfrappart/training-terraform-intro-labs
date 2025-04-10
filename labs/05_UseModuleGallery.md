@@ -6,7 +6,9 @@
   - [Instructions](#instructions)
     - [Before you start](#before-you-start)
     - [Exercise 1: Download a module](#exercise-1-download-a-module)
-    - [Exercise 2: Instantiate a module](#exercise-2-instantiate-a-module)
+      - [Use your existing Resource Group](#use-your-existing-resource-group)
+      - [Download a VNET module](#download-a-vnet-module)
+    - [Exercise 2: Instantiate the module](#exercise-2-instantiate-the-module)
     - [Exercise 3: Remove resources](#exercise-3-remove-resources)
 
 ## Lab overview
@@ -24,14 +26,16 @@ After you complete this lab, you will be able to:
 
 ### Before you start
 
-- Ensure Terraform (version >= 1.0.0) is installed and available from system's PATH.
+- Ensure Terraform (version >= 1.0.0) is installed and available from system PATH.
 - Ensure Azure CLI is installed.
 - Check your access to the Azure Subscription and Resource Group provided for this training.
 - Your environment is setup and ready to use from the lab *1-Setup environment*.
 
 ### Exercise 1: Download a module
 
-Create a `data.tf` file, and add the following `data` block to reference your Storage Account:
+#### Use your existing Resource Group
+
+Create a `data.tf` file, and add the following `data` block to reference your Resource Group:
 
 ```hcl
 data "azurerm_resource_group" "training_rg" {
@@ -39,8 +43,10 @@ data "azurerm_resource_group" "training_rg" {
 }
 ```
 
-> Since this Resource Group has been created outside of Terraform, we are using a data block to retrieve its configuration.
+> Since this Resource Group has been created outside of Terraform, we are using a data block to retrieve its configuration.  
 > No change will be done on this Resource Group, this template does not manage its lifecyle.  
+
+#### Download a VNET module
 
 Create a `network.tf` file, and add the following blocks to reference a module from the gallery:
 
@@ -70,20 +76,16 @@ terraform init -backend-config=".\configuration\dev-backend.hcl"
 
 > The downloaded module can be found in the *.terraform* folder.
 
-### Exercise 2: Instantiate a module
+### Exercise 2: Instantiate the module
 
 Run the following commands:
 
 ```powershell
 terraform plan
-```
-
-```powershell
 terraform apply
 ```
 
-Confirm the creation, approving with *yes*.  
-
+Confirm the creation (*yes* response).  
 Use the Azure portal to confirm resources creation. 
 
 ### Exercise 3: Remove resources
@@ -94,7 +96,7 @@ Run the `destroy` command
 terraform destroy
 ```
 
-Confirm the deletion, approving with *yes*.
+Confirm the deletion (*yes* response).
 
 Note:
 > `apply` and `destroy` commands accept an `-auto-approve` option to the command line that avoids querying for user validation.  

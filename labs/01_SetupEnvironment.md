@@ -40,7 +40,7 @@ After you complete this lab, you will be able to:
 
 ### Before you start
 
-- Ensure Terraform (version >= 1.0.0) is installed and available from system's PATH.
+- Ensure Terraform (version >= 1.0.0) is installed and available from system PATH.
 - Ensure Azure CLI is installed.
 - Check your access to the Azure Subscription and Resource Group provided for this training.
 
@@ -174,14 +174,14 @@ Get details at https://www.terraform.io/docs/cli/commands/fmt.html.
 
 Once your template is ready, open a new shell and login using AZ CLI
 
-```bash
+```powershell
 az login [--tenant "tenant_id"]
 az account set --subscription "subscription_id"
 ```
 
 The first Terraform command to run after you created your template is
 
-```hcl
+```powershell
 terraform init
 ```
 
@@ -271,7 +271,7 @@ This mechanism is called *partial configuration*.
 
 We can now set the backend using the CLI option, running the following command:
 
-```bash
+```powershell
 terraform init -backend-config=".\configuration\dev-backend.hcl"
 ```
 
