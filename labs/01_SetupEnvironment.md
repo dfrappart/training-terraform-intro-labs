@@ -108,6 +108,7 @@ Notes:
     > There are multiple types of backend that might be used. All majors Cloud Providers have their own (s3 for AWS, gcs for GCP, ...)
 
     > This configuration is valid for an authentication using AZ CLI. If you're using a Service Principal or a Managed Identity, additional fields may be mandatory.  
+    
     Refer tp https://developer.hashicorp.com/terraform/language/backend/azurerm
 
 1. In the Terraform configuration block, add the provider requirements:

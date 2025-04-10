@@ -45,7 +45,7 @@ After you complete this lab, you will be able to:
 Create a `data.tf` file, and add the following `data` block to reference your Resource Group:
 
 ```hcl
-data "azurerm_resource_group" "training_rg" {
+data "azurerm_resource_group" "rg_training" {
   name = "your_resource_group_name"
 }
 ```
@@ -101,7 +101,7 @@ In the *configuration* folder, create a file named `dev.tfvars` and add this con
 ```hcl
 admin_account_login = "trainingadmindb"
 project_name = "sampledev_with_my_trigram" # <-- replace with a unique name
-location = "francecentral"
+location = "westeurope"
 ```
 
 > `project_name` will be used to create resources with a public FQDN: choose an unique one for your resources.
@@ -113,7 +113,7 @@ Create a `db.tf` file, and add the following blocks to create an Azure SQL Serve
 ```hcl
 resource "azurerm_mssql_server" "training_sql_srv" {
   name                         = "${var.project_name}-sqlsrv"
-  resource_group_name          = data.azurerm_resource_group.training_rg.name
+  resource_group_name          = data.azurerm_resource_group.rg_training.name
   location                     = var.location
   version                      = "12.0"
   administrator_login          = var.admin_account_login
@@ -121,7 +121,7 @@ resource "azurerm_mssql_server" "training_sql_srv" {
   minimum_tls_version          = "1.2"
 }
 
-resource "azurerm_mssql_database" "test" {
+resource "azurerm_mssql_database" "training_db" {
   name           = "test-db"
   server_id      = azurerm_mssql_server.training_sql_srv.id
   sku_name       = "S0"
@@ -192,7 +192,7 @@ In the *configuration* folder, create a new file named `prod.tfvars` with the fo
 ```hcl
 admin_account_login = "trainingadmindb"
 project_name = "[a project name]prod"
-location = "francecentral"
+location = "westeurope"
 ```
 
 #### Deploy resources

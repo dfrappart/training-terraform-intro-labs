@@ -40,7 +40,7 @@ After you complete this lab, you will be able to:
 Create a `data.tf` file, and add the following `data` block to reference your Resource Group:
 
 ```hcl
-data "azurerm_resource_group" "training_rg" {
+data "azurerm_resource_group" "rg_training" {
   name = "your_resource_group_name"
 }
 ```
@@ -53,9 +53,9 @@ data "azurerm_resource_group" "training_rg" {
 Create a `storage.tf` file, and add the following `resource` block to create a Storage Account:
 
 ```hcl
-resource "azurerm_storage_account" "example" {
+resource "azurerm_storage_account" "training_storage" {
   name                     = "myuniquenamestorageaccount" # <-- replace with a unique name
-  resource_group_name      = data.azurerm_resource_group.training_rg.name
+  resource_group_name      = data.azurerm_resource_group.rg_training.name
   location                 = "westeurope"
   account_tier             = "Standard"
   account_replication_type = "GRS"

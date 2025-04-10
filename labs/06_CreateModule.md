@@ -47,7 +47,7 @@ After you complete this lab, you will be able to:
 Create a `data.tf` file, and add the following `data` block to reference your Resource Group:
 
 ```hcl
-data "azurerm_resource_group" "training_rg" {
+data "azurerm_resource_group" "rg_training" {
   name = "your_resource_group_name"
 }
 ```
@@ -139,7 +139,7 @@ module "storage" {
   source = "./modules/storageaccount" # we are importing Terraform module files from this location
 
   # specify input values for the module
-  resource_group_name = data.azurerm_resource_group.training_rg.name
+  resource_group_name = data.azurerm_resource_group.rg_training.name
   storage_name = "a_unique_name_goes_here"
   container_name = "content" # this is not obligatory as a default value exist for the container name in the module
 }
