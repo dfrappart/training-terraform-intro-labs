@@ -10,6 +10,12 @@ variable "AzureSubscriptionID" {
   description = "The subscription id for the authentication in the provider"
 }
 
+variable "secondndSubId" {
+  type        = string
+  description = "The subscription id for the second subscription in the provider"
+}
+
+
 variable "AzureClientID" {
   type        = string
   description = "The application Id, taken from Azure AD app registration"
@@ -48,7 +54,7 @@ variable "AzureADClientID" {
 variable "AzureRegion" {
   type        = string
   description = "The region for the Azure resource"
-  default     = "eastus"
+  default     = "francecentral"
 
 }
 

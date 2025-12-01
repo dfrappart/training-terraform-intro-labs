@@ -29,7 +29,7 @@ provider "azurerm" {
 
   alias = "trainingroom3"
 
-  subscription_id = "8d2a1f75-7232-45f5-8b46-a0e16f40c8d8"
+  subscription_id = "8340c0e6-0f3e-4a79-b0dc-8169e4997589"
   tenant_id       = var.AzureTenantID
   client_id       = var.AzureClientID
   client_secret   = var.AzureClientSecret

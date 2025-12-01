@@ -27,7 +27,7 @@ resource "azurerm_storage_account" "Statfstate" {
   infrastructure_encryption_enabled = false
   is_hns_enabled                    = false
   large_file_share_enabled          = null
-  location                          = "eastus"
+  location                          = var.AzureRegion
   min_tls_version                   = "TLS1_2"
   name                              = lower(substr(format("%s%s", "sta", replace(each.value, ".", "")), 0, 24))
   nfsv3_enabled                     = false
