@@ -1,6 +1,6 @@
-# Setup environment
+# Use Module Gallery
 
-- [Setup environment](#setup-environment)
+- [Use Module Gallery](#use-module-gallery)
   - [Lab overview](#lab-overview)
   - [Objectives](#objectives)
   - [Instructions](#instructions)

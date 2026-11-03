@@ -187,7 +187,7 @@ terraform apply -var-file="..\configuration\dev.tfvars"
 
 ### Exercise 2: Use module outputs
 
-In this exercice, we will add a Storage Account Queue in the newly created storage.  
+In this exercise, we will add a Storage Account Queue in the newly created storage.  
 We will not create this resource in the module itself but in the root module.
 
 In **main.tf** file of the root module, create the Queue with:

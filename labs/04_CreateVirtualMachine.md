@@ -1,6 +1,6 @@
-# Setup environment
+# Create Virtual Machine
 
-- [Setup environment](#setup-environment)
+- [Create Virtual Machine](#create-virtual-machine)
   - [Lab overview](#lab-overview)
   - [Objectives](#objectives)
   - [Instructions](#instructions)

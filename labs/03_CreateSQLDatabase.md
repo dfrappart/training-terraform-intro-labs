@@ -1,6 +1,6 @@
-# Setup environment
+# Create SQL Database
 
-- [Setup environment](#setup-environment)
+- [Create SQL Database](#create-sql-database)
   - [Lab overview](#lab-overview)
   - [Objectives](#objectives)
   - [Instructions](#instructions)

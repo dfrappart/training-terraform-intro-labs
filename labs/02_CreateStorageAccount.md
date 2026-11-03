@@ -1,7 +1,8 @@
-# Setup environment
+# Create Storage Account
 
-- [Setup environment](#setup-environment)
-  - [Lab overview](#lab-overview)
+In this lab, you will learn how to deploy a Storage Account using terraform workflow (cli).
+
+- [Create Storage Account](#create-storage-account)
   - [Objectives](#objectives)
   - [Instructions](#instructions)
     - [Before you start](#before-you-start)
@@ -12,10 +13,6 @@
     - [Exercise 3: Update the Storage Account from the portal](#exercise-3-update-the-storage-account-from-the-portal)
     - [Exercise 4: Update the Storage Account name](#exercise-4-update-the-storage-account-name)
     - [Exercise 5: Remove the Storage Account](#exercise-5-remove-the-storage-account)
-
-## Lab overview
-
-In this lab, you will learn how to deploy a Storage Account using terraform workflow (cli).
 
 ## Objectives
 
