@@ -85,11 +85,11 @@ variable "location" {
 
 The Terraform template needs values for these three variables in order to use them.  
 
-Setting values for variables can be done using different ways:
+Setting values for variables can be done using different ways (choose one or the other way):
 
-- Through an environment variable matching the name of the variable, prefixed with *TF_VAR_* (for example `TF_VAR_project_name="myproject"`)
-- thanks to a `-var` option in the command line (for example `-var='project_name="myproject"'`)
-- thanks to a `-var-file` option in the command line, providing the path to a *.tfvars* file (for example `-var-file=".\configuration\training.tfvars"`) ; this file is to be provided at `plan` and `apply` phases.
+- through an environment variable matching the name of the variable, prefixed with *TF_VAR_* (for example `TF_VAR_project_name="myproject"`)
+- OR thanks to a `-var` option in the command line (for example `-var='project_name="myproject"'`)
+- OR thanks to a `-var-file` option in the command line, providing the path to a *.tfvars* file (for example `-var-file=".\configuration\training.tfvars"`) ; this file is to be provided at `plan` and `apply` phases.
 
 Variables are referenced within Terraform template files as attributes of an object named `var`, e.g. `var.project_name`.
 
