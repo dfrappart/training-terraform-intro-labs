@@ -10,7 +10,6 @@ resource "azurerm_resource_group" "RG" {
   }
 }
 
-
 resource "azurerm_storage_account" "Statfstate" {
   for_each = toset(var.TrainingList)
 

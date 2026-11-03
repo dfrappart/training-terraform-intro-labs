@@ -1,8 +1,7 @@
 
 provider "azurerm" {
+  resource_provider_registrations = "none"
 
-
-  #skip_provider_registration = true
   features {
     resource_group {
       prevent_deletion_if_contains_resources = false
@@ -14,13 +13,11 @@ provider "azurerm" {
   tenant_id       = var.AzureTenantID
   client_id       = var.AzureClientID
   client_secret   = var.AzureClientSecret
-
 }
 
 provider "azurerm" {
+  resource_provider_registrations = "none"
 
-
-  #skip_provider_registration = true
   features {
     resource_group {
       prevent_deletion_if_contains_resources = false
@@ -33,6 +30,5 @@ provider "azurerm" {
   tenant_id       = var.AzureTenantID
   client_id       = var.AzureClientID
   client_secret   = var.AzureClientSecret
-
 }
 
